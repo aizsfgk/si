@@ -1,0 +1,5 @@
+server
+logs/*
+*.o
+*.a
+*.so
