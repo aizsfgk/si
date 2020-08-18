@@ -82,12 +82,12 @@ int main(int argc, char const *argv[]) {
 		// 安装信号处理程序
 		struct sigaction sa;
 		sigemptyset(&sa.sa_mask);
-	    sa.sa_flags = SA_RESTART;
-	    sa.sa_handler = baseGrimReaper;
-	    if (sigaction(SIGCHLD, &sa, NULL) == -1) {
-	        errEcho("sigaction err");
-	        return -1;
-	    }
+		sa.sa_flags = SA_RESTART;
+		sa.sa_handler = baseGrimReaper;
+		if (sigaction(SIGCHLD, &sa, NULL) == -1) {
+		    errEcho("sigaction err");
+		    return -1;
+		}
 
 		int lfd = baseListen(server.ip, server.port);
 		if (lfd == -1) {

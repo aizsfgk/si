@@ -3,25 +3,32 @@
 # -g 选项 支持gdb调试
 
 EXE_NAME := si-server
+LOCAL_LIB_PATH := /home/zhangshifeng/self/cpp/si/lib
 
 # 编译全部
-all: err.o log.o conf.o net.o handle.o libread_line.so libcommon.a
-	gcc -I/home/zhangshifeng/self/cpp/si/lib err.o log.o conf.o net.o handle.o server.c -g -o $(EXE_NAME)  -L ./lib -lread_line -ldl -lcommon
+all: err.o log.o conf.o net.o handle.o server.o libread_line.so libcommon.a
+	gcc -I$(LOCAL_LIB_PATH) err.o log.o conf.o net.o handle.o server.o -g -o $(EXE_NAME)  -L ./lib -lread_line -ldl -lcommon
 
-err.o:
-	gcc -c err.c -o err.o
+# err.o:
+# 	gcc -c err.c -o err.o
 
-log.o:
-	gcc -c log.c -o log.o
+# log.o:
+# 	gcc -c log.c -o log.o
 
-conf.o:
-	gcc -I/home/zhangshifeng/self/cpp/si/lib -c conf.c -o conf.o
+# conf.o:
+# 	gcc -I/home/zhangshifeng/self/cpp/si/lib -c conf.c -o conf.o
 
-net.o:
-	gcc -c net.c -o net.o
+# net.o:
+# 	gcc -c net.c -o net.o
 
-handle.o:
-	gcc -c handle.c -o handle.o
+# handle.o:
+# 	gcc -c handle.c -o handle.o
+
+# server.o:
+# 	gcc -c server.c -o server.o
+
+%.o : %.c
+	gcc -g -I$(LOCAL_LIB_PATH) -c $< -o $@
 
 
 # export LD_LIBRARY_PATH=$(PWD)/lib:LD_LIBRARY_PATH
