@@ -1,14 +1,13 @@
 #include "conf.h"
 #include "server.h"
-#include "./lib/read_line.h"
-#include "./lib/common.h"
+#include "read_line.h"
+#include "common.h"
 
 #include <stdlib.h> // 这里定义了NULL  atoi
 #include <unistd.h> // access
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>   // O_RDONLY
-#include "conf.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -75,6 +74,7 @@ int loadConfig(const char *conf_file) {
 		trim(key);
 		trim(value);
 
+		// 日志格式解析
 		if (strcmp(key, "log_level") == 0) {
 			server.log_level = atoi(value);
 		} else if (strcmp(key, "log_file") == 0) {
@@ -85,6 +85,8 @@ int loadConfig(const char *conf_file) {
 			server.ip = zstrdup(value);
 		} else if (strcmp(key, "port") == 0) {
 			server.port = atoi(value);
+		} else if (strcmp(key, "net") == 0) {
+			server.net = zstrdup(value);
 		}
 	}
 

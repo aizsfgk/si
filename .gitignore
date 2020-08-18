@@ -1,5 +1,8 @@
-server
+si-server
 logs/*
 *.o
 *.a
 *.so
+.DS_Store
+._.DS_Store
+._sistr.c

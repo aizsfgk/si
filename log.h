@@ -16,9 +16,11 @@ int initLog(int level, const char *file, int use_console);
 
 void logging(int level,const char *file, const int line, const char *fmt, ...);
 
-#define Debug(fmt, ...) logging(DEBUG, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
-#define Info(fmt, ...)  logging(INFO, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
-#define Warn(fmt, ...)  logging(WARN, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
-#define Error(fmt, ...) logging(ERROR, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_DEBUG(fmt, ...)  logging(DEBUG, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+
+#define LOG_INFO(fmt, ...) logging(INFO, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+
+#define LOG_WARN(fmt, ...)  logging(WARN, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+#define LOG_ERROR(fmt, ...) logging(ERROR, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 
 #endif
