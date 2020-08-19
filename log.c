@@ -5,6 +5,7 @@
 // #include <stdlib.h> // 
 #include <stdarg.h> // va_list
 #include <time.h>   // time_t
+#include <unistd.h>
 // #include <string.h>
 
 static const char *LEVEL_NAMES[] = {"DEBUG", "INFO", "WARN", "ERROR"};
@@ -54,7 +55,7 @@ void logging(int level, const char *file, const int line, const char *fmt, ...) 
 	ptr += size;
 	cap -= size;
 
-	size = snprintf(ptr, cap, "[%-5s][%s:%d] ", LEVEL_NAMES[level], file, line);
+	size = snprintf(ptr, cap, "[%5s][pid:%ld][%s:%d]", LEVEL_NAMES[level], (long)getpid(), file, line);
 	ptr += size;
 	cap -= size;
 

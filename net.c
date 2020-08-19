@@ -46,8 +46,8 @@ int baseListen(const char *ip, int port) {
 	hints.ai_addr = NULL;
 	hints.ai_next = NULL;
 
-	char port_str[15];
-    sprintf(port_str, "%d", port);
+	char port_str[5];
+	sprintf(port_str, "%d", port);
 
 	s = getaddrinfo(ip, port_str, &hints, &result);
 	if (s != 0) {

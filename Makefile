@@ -6,8 +6,8 @@ EXE_NAME := si-server
 LOCAL_LIB_PATH := /home/zhangshifeng/self/cpp/si/lib
 
 # 编译全部
-all: err.o log.o conf.o net.o handle.o server.o libread_line.so libcommon.a
-	gcc -I$(LOCAL_LIB_PATH) err.o log.o conf.o net.o handle.o server.o -g -o $(EXE_NAME)  -L ./lib -lread_line -ldl -lcommon
+all: err.o log.o conf.o net.o command.o  protocol.o handle.o server.o libread_line.so libcommon.a
+	gcc -I$(LOCAL_LIB_PATH) err.o log.o conf.o net.o command.o  protocol.o handle.o server.o -g -o $(EXE_NAME)  -L ./lib -lread_line -ldl -lcommon
 
 # err.o:
 # 	gcc -c err.c -o err.o
